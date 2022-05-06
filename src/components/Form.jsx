@@ -2,7 +2,8 @@ import React, { useState } from  'react';
     
     
 const UserForm = (props) => {
-    const [firstName, setFirstName] = useState("");
+    const [firstName, setFirstName] = useState("");  
+    // "" these are default empty strings. Firstname is a an empty string
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");  
     const [password, setPassword] = useState(""); 
@@ -15,8 +16,9 @@ const UserForm = (props) => {
     const [confirmError, setConfirmError] = useState(""); 
     
     const createUser = (e) => {
-        e.preventDefault();
-        const newUser = { firstName, lastName, email, password, confirm };
+        e.preventDefault(); 
+        // stops the page from refreshing on every submit of the form 
+        const newUser = { firstName, lastName, email, password, confirm }; // this is ES7 context typically since its an object it should be key : value pair ' password : password '. 
         console.log("Welcome", newUser);
     };
 
@@ -79,7 +81,8 @@ const UserForm = (props) => {
             <form onSubmit={ createUser }>
                 <div>
                     <label>Fisrt Name: </label> 
-                    <input type="text" onChange={ handleFirstName } />
+                    <input type="text" onChange={ handleFirstName } value = {firstName} />  
+                    {/* // onChange is a sythetic event */}
                 </div>
                 {
                     firstNameError ?
@@ -88,7 +91,7 @@ const UserForm = (props) => {
                 }
                 <div>
                     <label>Last Name: </label> 
-                    <input type="text" onChange={ handleLastName } />
+                    <input type="text" onChange={ handleLastName } value = {lastName} />
                 </div>
                 {
                     lastNameError ?
@@ -97,7 +100,7 @@ const UserForm = (props) => {
                 }
                 <div>
                     <label>Email: </label>
-                    <input type="text" onChange={ handleEmail } />
+                    <input type="text" onChange={ handleEmail } value = {email} />
                 </div>
                 {
                     emailError ?
@@ -106,7 +109,7 @@ const UserForm = (props) => {
                 }
                 <div>
                     <label>Password: </label>
-                    <input type="text" onChange={ handlePassword } />
+                    <input type="text" onChange={ handlePassword } value = {password} />
                 </div>
                 {
                     passwordError ?
@@ -115,7 +118,7 @@ const UserForm = (props) => {
                 }
                 <div>
                     <label>Confirm Password: </label>
-                    <input type="text" onChange={ handleConfirm } />
+                    <input type="text" onChange={ handleConfirm } value = {confirm} />
                 </div>
                 {
                     confirmError ?
